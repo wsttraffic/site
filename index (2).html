@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Заработай до 15 000 ₽ — Партнёрская программа</title>
+    <!-- Google Fonts + AOS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0c12;
+            background-image: radial-gradient(circle at 15% 30%, rgba(46, 52, 64, 0.2) 0%, #0a0c12 90%);
+            color: #eef2ff;
+            scroll-behavior: smooth;
+            line-height: 1.5;
+        }
+
+        /* ===== Анимации и общие эффекты ===== */
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.4); }
+            70% { box-shadow: 0 0 0 12px rgba(250, 204, 21, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-6px); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .glass-card {
+            background: rgba(18, 22, 32, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(250, 204, 21, 0.2);
+            border-radius: 2rem;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* header */
+        .header {
+            background: rgba(10, 12, 18, 0.85);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(250, 204, 21, 0.2);
+            padding: 16px 0;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #facc15, #ffb347);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #facc15;
+            color: #facc15;
+            padding: 8px 24px;
+            border-radius: 60px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.25s ease;
+        }
+
+        .btn-outline:hover {
+            background: #facc15;
+            color: #0a0c12;
+            box-shadow: 0 0 12px rgba(250,204,21,0.4);
+        }
+
+        /* hero */
+        .hero {
+            padding: 90px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .badge {
+            background: rgba(250, 204, 21, 0.12);
+            border: 1px solid rgba(250, 204, 21, 0.3);
+            border-radius: 60px;
+            display: inline-block;
+            padding: 6px 18px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 28px;
+            backdrop-filter: blur(4px);
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #facc15;
+            text-shadow: 0 0 8px rgba(250,204,21,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin-top: 48px;
+        }
+
+        .stat-card {
+            background: rgba(20, 24, 36, 0.7);
+            backdrop-filter: blur(8px);
+            border-radius: 2rem;
+            padding: 16px 28px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .stat-number {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #facc15;
+        }
+
+        /* секции */
+        .section {
+            padding: 90px 0;
+            border-top: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin-bottom: 56px;
+            background: linear-gradient(120deg, #fff, #facc15);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* карточки преимуществ */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 28px;
+        }
+
+        .feature-card {
+            background: rgba(18, 22, 32, 0.7);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(250, 204, 21, 0.15);
+            border-radius: 2rem;
+            padding: 32px 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: #facc15;
+            transform: translateY(-6px);
+            background: rgba(250, 204, 21, 0.05);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        /* шаги */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+        }
+
+        .step-card {
+            background: rgba(22, 26, 38, 0.7);
+            backdrop-filter: blur(8px);
+            border-radius: 2rem;
+            padding: 32px 24px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.2s;
+        }
+
+        .step-number {
+            background: #facc15;
+            width: 52px;
+            height: 52px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #0a0c12;
+            margin-bottom: 24px;
+        }
+
+        /* тарифы */
+        .tariffs-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .tariff-card {
+            background: #12141e;
+            border-radius: 2rem;
+            padding: 34px 24px;
+            flex: 1;
+            min-width: 270px;
+            text-align: center;
+            border: 1px solid rgba(250, 204, 21, 0.2);
+            transition: all 0.25s;
+            position: relative;
+        }
+
+        .tariff-card.popular {
+            border: 1.5px solid #facc15;
+            transform: scale(1.02);
+            background: #1a1d2b;
+            box-shadow: 0 10px 30px -10px rgba(250,204,21,0.2);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #facc15;
+            padding: 5px 18px;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #0f0f1c;
+        }
+
+        .price {
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin: 20px 0;
+        }
+
+        .btn-primary {
+            background: #facc15;
+            color: #0a0c12;
+            font-weight: 600;
+            padding: 12px 18px;
+            border-radius: 60px;
+            display: inline-block;
+            width: 100%;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: #ffd966;
+            box-shadow: 0 0 15px rgba(250,204,21,0.5);
+            transform: scale(0.98);
+        }
+
+        /* калькулятор */
+        .calculator-wrap {
+            background: rgba(18, 22, 32, 0.6);
+            backdrop-filter: blur(12px);
+            border-radius: 2.5rem;
+            padding: 40px 36px;
+            max-width: 720px;
+            margin: 0 auto;
+            border: 1px solid rgba(250, 204, 21, 0.2);
+        }
+
+        input[type="range"] {
+            width: 100%;
+            background: #2d2f3a;
+            height: 5px;
+            border-radius: 5px;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]:focus {
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            background: #facc15;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 8px #facc15;
+        }
+
+        .calc-result {
+            background: #0f111a;
+            border-radius: 2rem;
+            padding: 28px;
+            margin-top: 28px;
+            text-align: center;
+            border: 1px solid rgba(250, 204, 21, 0.2);
+        }
+
+        .income {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin: 12px 0;
+            color: #facc15;
+        }
+
+        /* партнёрка / уровни */
+        .partner-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 24px;
+            margin: 48px 0;
+        }
+
+        .partner-card {
+            background: #12141e;
+            border-radius: 2rem;
+            padding: 28px 20px;
+            text-align: center;
+            border: 1px solid rgba(250, 204, 21, 0.2);
+        }
+
+        .rate {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #facc15;
+        }
+
+        /* отзывы */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 28px;
+        }
+
+        .review-card {
+            background: #12141e;
+            border-radius: 2rem;
+            padding: 28px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.2s;
+        }
+
+        .stars {
+            color: #facc15;
+            margin-bottom: 16px;
+            font-size: 1.2rem;
+        }
+
+        /* cta */
+        .cta {
+            background: linear-gradient(145deg, #0d0f17, #07090f);
+            text-align: center;
+            padding: 80px 0;
+            border-top: 1px solid #facc1520;
+        }
+
+        .btn-large {
+            background: #facc15;
+            color: #0a0c12;
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding: 16px 48px;
+            border-radius: 60px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 28px;
+            transition: 0.2s;
+        }
+
+        .btn-large:hover {
+            background: #ffd966;
+            transform: scale(1.02);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            font-size: 0.8rem;
+            color: #6b7280;
+            border-top: 1px solid rgba(250,204,21,0.1);
+        }
+
+        @media (max-width: 680px) {
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .tariff-card.popular {
+                transform: scale(1);
+            }
+            .calculator-wrap {
+                padding: 28px 20px;
+            }
+        }
+
+        [data-aos] {
+            transition-duration: 0.5s;
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="logo">WSTTraffic</div>
+        <a href="https://t.me/m/9wgve6e7ODNi" class="btn-outline" target="_blank">Получить ссылку</a>
+    </div>
+</header>
+
+<main>
+    <!-- hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="badge" data-aos="fade-up">🔥 Официальная партнёрка банков</div>
+            <h1 data-aos="fade-up" data-aos-delay="100">Заработай <span>до 15 000 ₽</span><br> за открытие счёта</h1>
+            <p data-aos="fade-up" data-aos-delay="200">Открой расчётный счёт в банке-партнёре и получи деньги на карту. Без вложений, опыт не нужен.</p>
+            <div class="stats-grid" data-aos="fade-up" data-aos-delay="300">
+                <div class="stat-card"><div class="stat-number">15 000 ₽</div><div>макс. выплата</div></div>
+                <div class="stat-card"><div class="stat-number">10+</div><div>банков-партнёров</div></div>
+                <div class="stat-card"><div class="stat-number">100%</div><div>законно</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- преимущества -->
+    <section class="section" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают нас</h2>
+            <div class="grid-4">
+                <div class="feature-card"><div class="feature-icon">⚡</div><h3>Быстро</h3><p>Онлайн-открытие счёта за 15 минут, без визитов в банк.</p></div>
+                <div class="feature-card"><div class="feature-icon">🔒</div><h3>Легально</h3><p>Прямой договор с банками, выплаты официальные.</p></div>
+                <div class="feature-card"><div class="feature-icon">📈</div><h3>Высокий доход</h3><p>Ставка растёт — до 5 500 ₽ за каждого друга.</p></div>
+                <div class="feature-card"><div class="feature-icon">🤝</div><h3>Поддержка 24/7</h3><p>Личный менеджер в Telegram ответит сразу.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3 шага -->
+    <section class="section" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">3 шага до выплаты</h2>
+            <div class="steps-grid">
+                <div class="step-card"><div class="step-number">01</div><h3>Напиши в Telegram</h3><p>Менеджер отправит персональную ссылку и всё объяснит.</p></div>
+                <div class="step-card"><div class="step-number">02</div><h3>Открой счёт по ссылке</h3><p>Выбери любой банк из списка, открой РКО.</p></div>
+                <div class="step-card"><div class="step-number">03</div><h3>Получи выплату</h3><p>После активации счёта — деньги на карту от 5 000 до 15 500 ₽.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- тарифы / пакеты (обновлены суммы и ссылки) -->
+    <section class="section" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">Выбери свой пакет</h2>
+            <div class="tariffs-grid">
+                <div class="tariff-card"><h3>5 банков</h3><div class="price">5 000 ₽</div><p>выплата</p><ul style="margin: 16px 0; list-style: none;"><li>✅ 5 реферальных ссылок</li><li>✅ Быстрый старт</li></ul><a href="https://t.me/m/o_dyXRzHNGUy" class="btn-primary" target="_blank">Выбрать</a></div>
+                <div class="tariff-card popular"><div class="popular-badge">🔥 ТОП выбор</div><h3>8 банков</h3><div class="price">11 000 ₽</div><p>выплата</p><ul style="margin: 16px 0; list-style: none;"><li>✅ 8 рефералок</li><li>✅ Оптимальный доход</li></ul><a href="https://t.me/m/DyKr1S1gNmUy" class="btn-primary" target="_blank">Выбрать</a></div>
+                <div class="tariff-card"><h3>10 банков</h3><div class="price">15 500 ₽</div><p>максимум</p><ul style="margin: 16px 0; list-style: none;"><li>✅ 10 рефералок</li><li>✅ Приоритетная поддержка</li></ul><a href="https://t.me/m/JZIiN_4bZjhi" class="btn-primary" target="_blank">Выбрать</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- блок "Зарабатывай больше с уровнем" с добавленным текстом о реферальной программе -->
+    <section class="section" data-aos="fade-up">
+        <div class="container">
+            <!-- дополнительный текст перед заголовком -->
+            <p style="text-align: center; font-size: 1.25rem; margin-bottom: 16px; font-weight: 500; color: #facc15;">⭐ У нас есть реферальная программа ⭐</p>
+            <h2 class="section-title">Зарабатывай больше с уровнем</h2>
+            <div class="partner-grid">
+                <div class="partner-card"><div class="rate">1 999 ₽</div><p>за человека</p><strong>1-4 друга</strong><p>⭐ Базовый</p></div>
+                <div class="partner-card"><div class="rate">4 000 ₽</div><p>за человека</p><strong>5-9 друзей</strong><p>🔥 Профи</p></div>
+                <div class="partner-card"><div class="rate">5 500 ₽</div><p>за человека</p><strong>10+ друзей</strong><p>🏆 Амбассадор</p></div>
+            </div>
+            <div style="background: #0f111a; border-radius: 2rem; padding: 32px; text-align: center; border: 1px solid rgba(250,204,21,0.2);">
+                <h3>Владеешь каналом или блогом?</h3>
+                <p style="margin: 12px 0;">Индивидуальные условия для арбитражников: креативы, повышенные ставки, быстрые выплаты.</p>
+                <a href="https://t.me/m/9wgve6e7ODNi" class="btn-primary" style="width: auto; padding: 12px 32px;">Связаться с менеджером</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- динамический калькулятор (обновлённые ставки, теперь после блока уровней) -->
+    <section class="section" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">Рассчитай свой доход</h2>
+            <div class="calculator-wrap">
+                <p style="margin-bottom: 12px; font-weight: 500;">Количество друзей / клиентов</p>
+                <input type="range" id="friendsRange" min="1" max="20" value="6" step="1">
+                <div style="display: flex; justify-content: space-between; margin-top: 8px;"><span>1</span><span>20+</span></div>
+                <div class="calc-result" id="calcBlock">
+                    <div>Ваш уровень: <strong id="levelText">Базовый</strong></div>
+                    <div class="income" id="incomeValue">???</div>
+                    <div id="rateDetail">Ставка за человека 1 999 ₽</div>
+                    <div id="formula" style="margin-top: 10px;">—</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- отзывы -->
+    <section class="section" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">Реальные отзывы</h2>
+            <div class="reviews-grid" id="reviewsList"></div>
+        </div>
+    </section>
+
+    <!-- финальный призыв -->
+    <section class="cta" data-aos="zoom-in">
+        <div class="container">
+            <h2 style="font-size: 2rem; margin-bottom: 16px;">Начни зарабатывать прямо сейчас</h2>
+            <p>Первый шаг — просто написать нам в Telegram</p>
+            <a href="https://t.me/m/9wgve6e7ODNi" class="btn-large" target="_blank">Получить ссылку и начать →</a>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2025 Официальная партнёрская программа. Выплаты гарантируем. Работаем напрямую с банками.</p>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 700, once: true });
+
+    // Калькулятор с новыми ставками
+    const range = document.getElementById('friendsRange');
+    const levelSpan = document.getElementById('levelText');
+    const incomeSpan = document.getElementById('incomeValue');
+    const rateDetailSpan = document.getElementById('rateDetail');
+    const formulaSpan = document.getElementById('formula');
+
+    function getLevelAndRate(friends) {
+        if (friends <= 4) return { rate: 1999, level: 'Базовый' };
+        if (friends <= 9) return { rate: 4000, level: 'Профи' };
+        return { rate: 5500, level: 'Амбассадор' };
+    }
+
+    function updateCalc() {
+        let val = parseInt(range.value, 10);
+        const { rate, level } = getLevelAndRate(val);
+        const total = val * rate;
+        levelSpan.innerText = level;
+        incomeSpan.innerText = `${total.toLocaleString()} ₽`;
+        rateDetailSpan.innerText = `Ставка за человека ${rate.toLocaleString()} ₽`;
+        formulaSpan.innerText = `${val} чел. × ${rate.toLocaleString()} ₽ = ${total.toLocaleString()} ₽`;
+    }
+
+    range.addEventListener('input', updateCalc);
+    updateCalc();
+
+    // Отзывы
+    const reviews = [
+        { stars: "★★★★★", text: "Реально работает! Открыл 3 расчётных счёта, выплату получил через 2 дня. Спасибо команде!", author: "Алексей" },
+        { stars: "★★★★★", text: "Сначала не верил, но за 10 минут оформил, деньги пришли. Советую всем, кто хочет лёгкий доход.", author: "Мария" },
+        { stars: "★★★★★", text: "Партнёрка с банками — топ. Уже 7 друзей по моей ссылке, получил 41 тысячу.", author: "Дмитрий" },
+        { stars: "★★★★★", text: "Поддержка отвечает мгновенно, выплаты честные. Очень рад, что влился. Без обмана!", author: "Екатерина" }
+    ];
+    const container = document.getElementById('reviewsList');
+    reviews.forEach(r => {
+        const card = document.createElement('div');
+        card.className = 'review-card';
+        card.setAttribute('data-aos', 'fade-up');
+        card.innerHTML = `<div class="stars">${r.stars}</div><p>“${r.text}”</p><p style="margin-top: 20px; font-weight: 600;">— ${r.author}</p>`;
+        container.appendChild(card);
+    });
+</script>
+</body>
+</html>
